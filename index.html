@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- TODO change title -->
+    <title>
+      Robot Design Optimization with Rotational and Prismatic Joints using Black-Box Multi-Objective Optimization
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XJ0NHR591"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1XJ0NHR591');
+    </script>
+
+    <meta property="og:url"           content="https://haraduka.github.io/prismatic-joint-opt" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="
+      Robot Design Optimization with Rotational and Prismatic Joints using Black-Box Multi-Objective Optimization
+    " />
+    <meta property="og:description"   content="
+    Robots generally have a structure that combines rotational joints and links in a serial fashion.
+    On the other hand, various joint mechanisms are being utilized in practice, such as prismatic joints, closed links, and wire-driven systems.
+    Previous research have focused on individual mechanisms, proposing methods to design robots capable of achieving given tasks by optimizing the length of links and the arrangement of the joints.
+    In this study, we propose a method for the design optimization of robots that combine different types of joints, specifically rotational and prismatic joints.
+    The objective is to automatically generate a robot that minimizes the number of joints and link lengths while accomplishing a desired task, by utilizing a black-box multi-objective optimization approach.
+    This enables the simultaneous observation of a diverse range of body designs through the obtained Pareto solutions.
+    Our findings confirm the emergence of practical and known combinations of rotational and prismatic joints, as well as the discovery of novel joint combinations.
+    " />
+    <meta property="og:image" content="https://haraduka.github.io/prismatic-joint-opt/assets/img/banner.png" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-md-12">
+
+          <div class="text-center">
+            <h1 class="mt-5"><b>Robot Design Optimization</b></h1>
+            <h2 class="mt-3"><b>with Rotational and Prismatic Joints</b></h2>
+            <h2 class="mt-3"><b>using Black-Box Multi-Objective Optimization</b></h2>
+            <h4 class="mt-4 conf"><b>IROS2024</b></h4>
+            <ul class="list-inline mt-4">
+              <li class="list-inline-item"><a href="https://haraduka.github.io" target="_blank">Kento Kawaharazuka</a></li>
+              <li class="list-inline-item ml-4">Kei Okada</li>
+              <li class="list-inline-item ml-4">Masayuki Inaba</li>
+              <li class="mt-2">
+                JSK Robotics Laboratory, The University of Tokyo, Japan
+              </li>
+            </ul>
+            <ul class="list-inline mt-4">
+              <li class="list-inline-item">
+                <a href="https://arxiv.org/abs/2409.14721" target="_blank">Paper</a>
+              </li>
+              <li class="list-inline-item ml-4">
+                <a href="https://www.youtube.com/watch?v=XXJ4EK3Y4zQ" target="_blank">Video</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-lg-10 offset-lg-1">
+              <p>
+    Robots generally have a structure that combines rotational joints and links in a serial fashion.
+    On the other hand, various joint mechanisms are being utilized in practice, such as prismatic joints, closed links, and wire-driven systems.
+    Previous research have focused on individual mechanisms, proposing methods to design robots capable of achieving given tasks by optimizing the length of links and the arrangement of the joints.
+    In this study, we propose a method for the design optimization of robots that combine different types of joints, specifically rotational and prismatic joints.
+    The objective is to automatically generate a robot that minimizes the number of joints and link lengths while accomplishing a desired task, by utilizing a black-box multi-objective optimization approach.
+    This enables the simultaneous observation of a diverse range of body designs through the obtained Pareto solutions.
+    Our findings confirm the emergence of practical and known combinations of rotational and prismatic joints, as well as the discovery of novel joint combinations.
+              </p>
+            </div>
+          </div>
+
+          <div align="center" class="row mt-4 mb-4">
+            <div class="col-lg-6 offset-lg-3">
+              <img src="assets/img/example.png" class="img-fluid">
+            </div>
+          </div>
+
+          <div class="col-lg-10 offset-lg-1"><hr class="mt-4 mb-4"></div>
+          <div class="col-lg-10 offset-lg-1">
+            <h4>Robot Design Optimization with Rotational and Prismatic Joints using Black-Box Multi-Objective Optimization</h4>
+            <p>
+            The overview of the proposed system. Joint modules are expressed using Xacro, and a robot URDF is generated by combining these modules. The generated URDF is then evaluated through simulation, and the subsequent designs are iteratively generated by black-box optimization.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-12">
+                <img src="assets/img/system.png" class="img-fluid">
+              </div>
+            </div>
+
+            <p>
+            The joint modules used in this study. The roll joint (R), the pitch joint (P), the yaw joint (Y), the two-axis orthogonal joint (O), the prismatic/sliding joint (S), and the fixed joint (F) are predefined. The design parameters encompass the type of the joint module and the length of the link L.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-12">
+                <img src="assets/img/modules.png" class="img-fluid">
+              </div>
+            </div>
+
+            <p>
+            The random robot models generated through the combination of predefined joint modules.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-8 offset-lg-2">
+                <img src="assets/img/random.png" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-10 offset-lg-1"><hr class="mt-4 mb-4"></div>
+          <div class="col-lg-10 offset-lg-1">
+            <h4>Results for Target-ARM</h4>
+            <p>
+            Sampling results for Target-ARM. Each point represents a solution, with the Pareto solutions highlighted in red.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-10 offset-lg-1">
+                <img src="assets/img/arm-graph.png" class="img-fluid">
+              </div>
+            </div>
+
+            <p>
+            Several representative Pareto solutions (A) to (E) for Target-ARM. Each snapshot shows the result of inverse kinematics for the target position and orientation.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-10 offset-lg-1">
+                <img src="assets/img/arm-exp.gif" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-10 offset-lg-1"><hr class="mt-4 mb-4"></div>
+          <div class="col-lg-10 offset-lg-1">
+            <h4>Results for Target-LEG</h4>
+            <p>
+            Sampling results for Target-LEG. Each point represents a solution, with the Pareto solutions highlighted in red.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-10 offset-lg-1">
+                <img src="assets/img/leg-graph.png" class="img-fluid">
+              </div>
+            </div>
+
+            <p>
+            Several representative Pareto solutions (A) to (F) for Target-LEG. Each snapshot shows the result of inverse kinematics for the target position and orientation.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-10 offset-lg-1">
+                <img src="assets/img/leg-exp.gif" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-10 offset-lg-1"><hr class="mt-4 mb-4"></div>
+          <div class="col-lg-10 offset-lg-1">
+            <h4>Results for Target-WIDE</h4>
+            <p>
+            Sampling results for Target-WIDE. Each point represents a solution, with the Pareto solutions highlighted in red.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-10 offset-lg-1">
+                <img src="assets/img/wide-graph.png" class="img-fluid">
+              </div>
+            </div>
+
+            <p>
+            Several representative Pareto solutions (A) to (E) for Target-WIDE. Each snapshot shows the result of inverse kinematics for the target position and orientation.
+            </p>
+            <div align="center" class="row mt-4 mb-4">
+              <div class="col-lg-10 offset-lg-1">
+                <img src="assets/img/wide-exp.gif" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+
+          <!-- bibtex -->
+          <div class="col-lg-10 offset-lg-1"><hr class="mt-4 mb-4"></div>
+          <div class="col-lg-10 offset-lg-1">
+            <h4 id="bibtex">Bibtex</h4>
+            <pre>
+@inproceedings{kawaharazuka2024slideopt,
+  author={K. Kawaharazuka and K. Okada and M. Inaba},
+  title={{Robot Design Optimization with Rotational and Prismatic Joints Using Black-Box Multi-Objective Optimization}},
+  booktitle={2024 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  year=2024,
+}
+            </pre>
+          </div>
+
+          <!-- contact -->
+          <div class="col-lg-10 offset-lg-1"><hr class="mt-4 mb-4"></div>
+          <div class="col-lg-10 offset-lg-1 mb-5">
+            <h4 id="contact">Contact</h4>
+            <p>
+            If you have any questions, please feel free to contact
+            <a href="https://haraduka.github.io" target="_blank">Kento Kawaharazuka</a>.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
